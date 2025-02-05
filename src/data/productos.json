@@ -1,0 +1,32 @@
+[
+  {
+    "nombre": "Remera",
+    "marca": "Adidas",
+    "precio": "30000",
+    "stock": "1",
+    "detalles": {
+      "descripcion": "aca va la descripcion",
+      "color": "Rojo",
+      "talla": "M"
+    },
+    "imagenes": [
+      "https://res.cloudinary.com/druvz15q9/image/upload/v1738771994/phone_xunfve.svg",
+      "https://res.cloudinary.com/druvz15q9/image/upload/v1738764741/person-circle-outline_dq7h9q.svg"
+    ]
+  },
+  {
+    "nombre": "Remera",
+    "marca": "Nike",
+    "precio": "30000",
+    "stock": "1",
+    "detalles": {
+      "descripcion": "aca va la descripcion",
+      "color": "Rojo",
+      "talla": "M"
+    },
+    "imagenes": [
+      "https://res.cloudinary.com/druvz15q9/image/upload/v1738771994/phone_xunfve.svg",
+      "https://res.cloudinary.com/druvz15q9/image/upload/v1738764741/person-circle-outline_dq7h9q.svg"
+    ]
+  }
+]

@@ -1,4 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap");
+/*------------------ Estilos generales -------------*/
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -10,9 +13,55 @@
   font-weight: 400;
   font-style: normal;
 }
-.openSans {
+.open-sans {
   font-family: "Open Sans", serif;
   font-optical-sizing: auto;
-  font-weight: 200;
+  font-weight: 300;
   font-style: normal;
+}
+
+:root {
+  --background: #ffffff;
+  --background2: #f4f4f4;
+  --titulos: #333333;
+  --textoPrimario: #f4f4f4;
+  --textoSecundario: #9b9b9b;
+  --morado: #8133ff;
+  --lavanda: #f3d9ff;
+  --lavandaStr: #e8c1fa;
+  --descuentos: #00a650;
+}
+p {
+  margin: 0px !important;
+}
+.background {
+  background-color: var(--background);
+}
+.background2 {
+  background-color: var(--background2);
+}
+.titulo {
+  color: var(--titulos);
+}
+.texto-primario {
+  color: var(--textoPrimario);
+}
+.texto-secundario {
+  color: var(--textoSecundario);
+}
+.morado {
+  background-color: var(--morado);
+}
+.lavanda {
+  background-color: var(--lavanda);
+}
+.lavanda-str {
+  background-color: var(--lavandaStr);
+}
+.descuento {
+  color: var(--descuentos);
+}
+
+.lettering-space {
+  letter-spacing: 0.1em;
 }
