@@ -5,12 +5,12 @@ Este proyecto consiste en una plantilla general para ecommerce, en la cual la id
 Contiene plantilla general con logo de la marca y sus productos.
 Contiene panel de administrador para gestionar sus productos ( ver,crear,actualizar y eliminar productos).
 
-# Stack Utilizado: 
+# Stack Utilizado:
+
 ## React Js, Bootstrap, CSS, Express y Node Js.
+
 Zustand: Manejo de estados globales, liviana y facil de implementar.
 React Hook Forms: Manejo de formularios, facil integración.
-React Toastify: Para las Toasts.
+React Hot Toast: Para las Toasts.
 Ionic Icons: Iconos, elegida por el pequeño peso de sus iconos.
 React Router Dom: Manejo de rutas del lado del cliente.
-
-
