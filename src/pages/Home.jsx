@@ -1,7 +1,7 @@
 import React from "react";
 
 function Home() {
-  return <div></div>;
+  return <main className="py-5"></main>;
 }
 
 export default Home;

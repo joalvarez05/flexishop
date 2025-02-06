@@ -6,7 +6,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
+
 .oswald {
   font-family: "Oswald", serif;
   font-optical-sizing: auto;
@@ -49,8 +51,11 @@ p {
 .texto-secundario {
   color: var(--textoSecundario);
 }
-.morado {
+.bg-morado {
   background-color: var(--morado);
+}
+.text-morado {
+  color: var(--morado);
 }
 .lavanda {
   background-color: var(--lavanda);
@@ -64,4 +69,24 @@ p {
 
 .lettering-space {
   letter-spacing: 0.1em;
+}
+
+@media (min-width: 991.5px) {
+  .hide-on-desktop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991.5px) {
+  .show-on-mobile {
+    display: block !important;
+  }
+  .hide-on-mobile-md {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .hide-on-mobile-sm {
+    display: none !important;
+  }
 }

@@ -2,22 +2,22 @@ import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import { useParams } from "react-router-dom";
 import empresaData from "@/data/empresa.json";
+import useEmpresaStore from "@/hooks/useEmpresaStore";
+// import inputSearch from "@/utils/inputSearch.js";
 
 function Navbar() {
   const { id } = useParams();
   const [searchValue, setSearchValue] = useState("");
-  const [empresaActual, setEmpresaActual] = useState(null);
+  console.log(searchValue);
+  const setEmpresaActual = useEmpresaStore((state) => state.setEmpresaActual);
+  const empresaActual = useEmpresaStore((state) => state.empresaActual);
   const [isLoading, setIsLoading] = useState(true);
-
-  const handleSearch = (e) => {
-    setSearchValue(e.target.value);
-  };
 
   useEffect(() => {
     if (!id) {
+      console.log("ID no identificado");
       return;
     }
-
     const empresaEncontrada = empresaData.find(
       (item) => item.empresa.id === id
     );
@@ -26,15 +26,22 @@ function Navbar() {
     } else {
       setEmpresaActual(null);
     }
-    setIsLoading(false);
-  }, [id]);
 
+    setIsLoading(false);
+  }, [id, setEmpresaActual]);
+
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  // Reemplazar por un loader general para toda la app
   if (isLoading) {
-    return <div></div>;
+    return <div>Loading...</div>;
   }
+
   return (
     <>
-      <div className="lavanda-str pt-1 d-flex justify-content-center align-items-center hide-on-mobile">
+      <div className="lavanda-str pt-1 d-flex justify-content-center align-items-center hide-on-mobile-md">
         <span className="fs-5 py-1 fw-medium open-sans lettering-space">
           Vender sin comisiones nunca ha sido tan fácil
         </span>
@@ -49,6 +56,7 @@ function Navbar() {
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarNav"
                 aria-controls="sidebarNav"
+                aria-label="Desplegar modal"
               >
                 <span className="navbar-toggler-icon"></span>
               </button>
@@ -59,6 +67,7 @@ function Navbar() {
                     empresaActual?.logo ||
                     "https://res.cloudinary.com/druvz15q9/image/upload/v1738764741/person-circle-outline_dq7h9q.svg"
                   }
+                  title={empresaActual?.nombre || "logo"}
                   alt={`logo de ${empresaActual?.nombre || "empresa"}`}
                   style={{ maxWidth: "44px", borderRadius: "50%" }}
                 />
@@ -70,7 +79,7 @@ function Navbar() {
                 value={searchValue}
                 placeholder="Buscar..."
                 onChange={handleSearch}
-                className="hide-on-mobile inp-search"
+                className="hide-on-mobile-md inp-search"
               />
             </div>
             <div>
@@ -78,6 +87,7 @@ function Navbar() {
                 src="https://res.cloudinary.com/druvz15q9/image/upload/v1738764741/person-circle-outline_dq7h9q.svg"
                 alt="Avatar"
                 className="avatar-img"
+                title="avatar"
               />
             </div>
           </div>
@@ -92,7 +102,7 @@ function Navbar() {
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="offcanvas"
-                aria-label="Close"
+                aria-label="Cerrar modal"
               ></button>
             </div>
             <div className="offcanvas-body mt-5">
@@ -107,6 +117,7 @@ function Navbar() {
                     <img
                       src="https://res.cloudinary.com/druvz15q9/image/upload/v1738771994/whatsapp_cupez7.svg"
                       alt="icono whatsapp"
+                      title="whatsapp"
                       className="icon-sidebar"
                       loading="lazy"
                     />
@@ -125,6 +136,7 @@ function Navbar() {
                     <img
                       src="https://res.cloudinary.com/druvz15q9/image/upload/v1738771994/phone_xunfve.svg"
                       alt="icono telefono"
+                      title="telefono"
                       className="icon-sidebar"
                       loading="lazy"
                     />
@@ -142,6 +154,7 @@ function Navbar() {
                     <img
                       src="https://res.cloudinary.com/druvz15q9/image/upload/v1738771994/instagram_bjpldr.svg"
                       alt="icono instagram"
+                      title="instagram"
                       className="icon-sidebar"
                       loading="lazy"
                     />
@@ -174,6 +187,7 @@ function Navbar() {
                     <img
                       src="https://res.cloudinary.com/druvz15q9/image/upload/v1738771994/time_ja96um.svg"
                       alt="icono reloj"
+                      title="reloj"
                       className="icon-sidebar"
                       loading="lazy"
                     />
