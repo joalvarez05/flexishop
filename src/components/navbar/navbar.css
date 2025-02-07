@@ -11,20 +11,6 @@
   object-fit: cover;
 }
 
-.inp-search {
-  border: none;
-  outline: none;
-  border-radius: 20px;
-  padding: 0.6em;
-  background-color: #f1f1f1;
-  box-shadow: inset 1px 3px 6px rgba(0, 0, 0, 0.3);
-  transition: 300ms ease-in-out;
-}
-.inp-search:focus {
-  background-color: #ffffff;
-  transform: scale(1.05);
-  box-shadow: 4px 4px 20px #969696, -4px -4px 20px #ffffff;
-}
 .underline-nav {
   border-bottom: 2px solid #e8e9ea;
 }

@@ -7,10 +7,13 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .oswald {
   font-family: "Oswald", serif;
+
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -70,7 +73,35 @@ p {
 .lettering-space {
   letter-spacing: 0.1em;
 }
+/* ----------input de busqueda --------------- */
+.inp-search {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 0.6em;
+  width: 200px;
+  background-color: #f1f1f1;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+  transition: 300ms ease-in-out;
+}
+.inp-search:focus {
+  background-color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 2px 2px 10px #969696, -2px -2px 10px #ffffff;
+}
 
+/*  Cards productos */
+.card {
+  transition-duration: 0.3s;
+}
+.card:hover {
+  background-color: #ffffff;
+  box-shadow: 2px 2px 10px #969696, -2px -2px 10px #ffffff;
+  
+}
+/* ---------------------------------------------------------------------- */
+/*                             MEDIA QUERIES                         */
+/* -------------------------------------------------------------------- */
 @media (min-width: 991.5px) {
   .hide-on-desktop {
     display: none !important;

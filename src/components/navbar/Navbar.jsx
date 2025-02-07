@@ -3,16 +3,13 @@ import "./navbar.css";
 import { useParams } from "react-router-dom";
 import empresaData from "@/data/empresa.json";
 import useEmpresaStore from "@/hooks/useEmpresaStore";
-// import inputSearch from "@/utils/inputSearch.js";
 
 function Navbar() {
   const { id } = useParams();
-  const [searchValue, setSearchValue] = useState("");
-  console.log(searchValue);
   const setEmpresaActual = useEmpresaStore((state) => state.setEmpresaActual);
   const empresaActual = useEmpresaStore((state) => state.empresaActual);
   const [isLoading, setIsLoading] = useState(true);
-
+  
   useEffect(() => {
     if (!id) {
       console.log("ID no identificado");
@@ -29,10 +26,6 @@ function Navbar() {
 
     setIsLoading(false);
   }, [id, setEmpresaActual]);
-
-  const handleSearch = (e) => {
-    setSearchValue(e.target.value);
-  };
 
   // Reemplazar por un loader general para toda la app
   if (isLoading) {
@@ -73,15 +66,7 @@ function Navbar() {
                 />
               </div>
             </div>
-            <div className="ms-3 me-auto">
-              <input
-                type="search"
-                value={searchValue}
-                placeholder="Buscar..."
-                onChange={handleSearch}
-                className="hide-on-mobile-md inp-search"
-              />
-            </div>
+
             <div>
               <img
                 src="https://res.cloudinary.com/druvz15q9/image/upload/v1738764741/person-circle-outline_dq7h9q.svg"
