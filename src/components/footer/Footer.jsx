@@ -10,7 +10,7 @@ function Footer() {
   return (
     <footer className="text-center bg-body-tertiary py-3">
       <div>
-        <p className="open-sans fw-medium px-1">
+        <p className="open-sans fw-medium px-2">
           No pagues por adelantado sin conocer al local. Todos los ítems
           ofrecidos son responsabilidad de{" "}
           <span className="text-morado"> {empresaActual?.nombre}</span>

@@ -74,12 +74,14 @@ p {
   letter-spacing: 0.1em;
 }
 /* ----------input de busqueda --------------- */
+
 .inp-search {
   border: none;
   outline: none;
   border-radius: 20px;
   padding: 0.6em;
-  width: 200px;
+  width: 100%;
+  max-width: 700px;
   background-color: #f1f1f1;
   box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
   transition: 300ms ease-in-out;
@@ -111,23 +113,35 @@ p {
 /* ---------------------------------------------------------------------- */
 /*                             MEDIA QUERIES                         */
 /* -------------------------------------------------------------------- */
-
-@media (min-width: 991.5px) {
-  .hide-on-desktop {
+@media (max-width: 355px) {
+  .padding-sm-sm {
+    padding: 5px;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+}
+@media (max-width: 768px) {
+  .hide-on-mobile-sm {
     display: none !important;
   }
 }
-
 @media (max-width: 991.5px) {
   .show-on-mobile {
     display: block !important;
+  }
+  .sm {
+    padding-top: 20px;
+  }
+  .sm-bottom {
+    display: flex;
+    flex-direction: column;
   }
   .hide-on-mobile-md {
     display: none !important;
   }
 }
-@media (max-width: 768px) {
-  .hide-on-mobile-sm {
+@media (min-width: 991.5px) {
+  .hide-on-desktop {
     display: none !important;
   }
 }

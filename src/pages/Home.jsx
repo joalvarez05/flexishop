@@ -3,7 +3,7 @@ import agregarAlCarrito from "@/utils/agregarAlCarrito";
 import productos from "@/data/productos.json";
 import useCarritoStore from "@/hooks/useCarritoStore.js";
 function Home() {
-  const [ordenar, setOrdenar] = useState("Relevancia");
+  const [ordenar, setOrdenar] = useState("Filtrar");
   const [searchValue, setSearchValue] = useState("");
   const setProductoStore = useCarritoStore((state) => state.setProductoStore);
   const productoStore = useCarritoStore((state) => state.productoStore);
@@ -21,19 +21,19 @@ function Home() {
   };
 
   return (
-    <main className="py-5">
-      <section className="container pb-4">
-        <div className="d-flex justify-content-between">
-          <div>
-            <input
-              type="search"
-              value={searchValue}
-              placeholder="Buscar..."
-              onChange={handleSearch}
-              className="inp-search"
-            />
-          </div>
-          <div className="d-flex justify-content-center">
+    <main className="pt-3 pb-5">
+      <section className="container pb-2 d-flex sm-bottom">
+        <div className="text-center w-100">
+          <input
+            type="search"
+            value={searchValue}
+            placeholder="Buscar..."
+            onChange={handleSearch}
+            className="inp-search "
+          />
+        </div>
+        <div className="">
+          <div className="d-flex justify-content-end sm">
             <div className="dropdown">
               <button
                 type="button"
@@ -44,6 +44,14 @@ function Home() {
                 {ordenar}
               </button>
               <ul className="dropdown-menu">
+                <li>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => handleOrdenar("Relevancia")}
+                  >
+                    Relevancia{" "}
+                  </button>
+                </li>
                 <li>
                   <button
                     className="dropdown-item"
@@ -66,7 +74,7 @@ function Home() {
         </div>
       </section>
       {/* Sección de productos */}
-      <section className="container" id="productos">
+      <section className="container " id="productos">
         <div className="row ">
           {productoStore.length > 0 ? (
             productoStore.map((prod, index) => (
@@ -95,10 +103,10 @@ function Home() {
                         </span>
                       </div>
                     </div>
-                    <div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center ">
                       <button
                         type="button"
-                        className="btn btn-dark"
+                        className="btn btn-dark padding-sm-sm"
                         onClick={() => agregarAlCarrito(prod)}
                       >
                         Agregar al carrito
