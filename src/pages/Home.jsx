@@ -41,17 +41,9 @@ function Home() {
                 aria-expanded="false"
                 data-bs-toggle="dropdown"
               >
-                Ordenar por
+                {ordenar}
               </button>
               <ul className="dropdown-menu">
-                <li>
-                  <button
-                    className="dropdown-item"
-                    onClick={() => handleOrdenar("Relevancia")}
-                  >
-                    Relevancia
-                  </button>
-                </li>
                 <li>
                   <button
                     className="dropdown-item"
@@ -75,18 +67,18 @@ function Home() {
       </section>
       {/* Sección de productos */}
       <section className="container" id="productos">
-        <div className="row">
+        <div className="row ">
           {productoStore.length > 0 ? (
             productoStore.map((prod, index) => (
-              <div className="col-12 col-md-4 col-lg-3 pt-3" key={index}>
+              <div className="col-6 col-md-4 col-lg-3 pt-3 " key={index}>
                 <a href="#" className="text-decoration-none">
-                  <div className="card py-3 d-flex flex-column align-items-center justify-content-center">
+                  <div className="card h-100 py-3 d-flex flex-column align-items-center justify-content-center">
                     <img
                       src={prod.imagenes}
                       className="card-img-top"
                       alt={prod.nombre}
                     />
-                    <div className="card-body">
+                    <div className="card-body ">
                       <div className="text-center">
                         <span className="card-text py-1 oswald fs-5 fw-medium">
                           {prod.nombre}
@@ -98,7 +90,7 @@ function Home() {
                         </span>
                       </div>
                       <div className="text-center py-1">
-                        <span className="card-text descuento fw-medium open-sans fs-4">
+                        <span className="card-text descuento fw-medium open-sans fs-4 ">
                           ${prod.precio}
                         </span>
                       </div>
