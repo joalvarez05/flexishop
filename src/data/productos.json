@@ -1,5 +1,6 @@
 [
   {
+    "id": "0004",
     "nombre": "Zapatillas",
     "marca": "Nike",
     "precio": "79.999",
@@ -12,6 +13,7 @@
     "imagenes": "https://media2.solodeportes.com.ar/media/catalog/product/cache/a0bd03cb38235cf9ca6c3c8cbea4afc1/z/a/zapatillas-running-nike-revolution-6-next-nature-mujer-negra--510010dc3729003-1.jpg"
   },
   {
+    "id": "0005",
     "nombre": "Zapatillas",
     "marca": "Nike",
     "precio": "74.999",
@@ -24,6 +26,7 @@
     "imagenes": "https://sporting.vtexassets.com/arquivos/ids/1342030-800-800?v=638566647816030000&width=800&height=800&aspect=true"
   },
   {
+    "id": "0006",
     "nombre": "Zapatillas",
     "marca": "Nike",
     "precio": "104.999",
@@ -36,6 +39,7 @@
     "imagenes": "https://sporting.vtexassets.com/arquivos/ids/1859672-1600-1600?v=638742786461300000&width=1600&height=1600&aspect=true"
   },
   {
+    "id": "0007",
     "nombre": "Zapatillas",
     "marca": "Nike",
     "precio": "104.999",
@@ -48,6 +52,7 @@
     "imagenes": "https://sporting.vtexassets.com/arquivos/ids/1859672-1600-1600?v=638742786461300000&width=1600&height=1600&aspect=true"
   },
   {
+    "id": "0008",
     "nombre": "Zapatillas",
     "marca": "Nike",
     "precio": "74.999",

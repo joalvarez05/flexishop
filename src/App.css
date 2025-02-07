@@ -10,7 +10,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html {
+  scroll-behavior: smooth;
+}
 
+.go-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--titulos);
+  color: white;
+  padding: 5px 7.5px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 20px;
+  z-index: 99;
+}
 .oswald {
   font-family: "Oswald", serif;
 

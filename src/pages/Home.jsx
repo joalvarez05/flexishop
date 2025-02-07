@@ -1,35 +1,69 @@
 import React, { useEffect, useState } from "react";
 import agregarAlCarrito from "@/utils/agregarAlCarrito";
 import productos from "@/data/productos.json";
+import useProductoStore from "@/hooks/useProductoStore.js";
 import useCarritoStore from "@/hooks/useCarritoStore.js";
+import { Toaster } from "react-hot-toast";
 function Home() {
   const [ordenar, setOrdenar] = useState("Filtrar");
   const [searchValue, setSearchValue] = useState("");
-  const setProductoStore = useCarritoStore((state) => state.setProductoStore);
-  const productoStore = useCarritoStore((state) => state.productoStore);
+  const [productosFiltrados, setProductosFiltrados] = useState([]);
+
+  const productoStore = useProductoStore((state) => state.productoStore);
+  const setProductoStore = useProductoStore((state) => state.setProductoStore);
+  const carritoStore = useCarritoStore((state) => state.carritoStore);
+  const setCarritoStore = useCarritoStore((state) => state.setCarritoStore);
+
+  // Cargar productos solo una vez
+  useEffect(() => {
+    setProductoStore(productos);
+  }, [setProductoStore]);
+
+  // Filtrar productos según la búsqueda
+  useEffect(() => {
+    setProductosFiltrados(
+      productoStore.filter((prod) =>
+        prod.nombre.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    );
+  }, [searchValue, productoStore]);
 
   const handleSearch = (e) => {
     setSearchValue(e.target.value);
   };
 
-  useEffect(() => {
-    setProductoStore(productos);
-  });
-
   const handleOrdenar = (opcion) => {
     setOrdenar(opcion);
   };
-
+  console.log(carritoStore);
   return (
-    <main className="pt-3 pb-5">
+    <main className="pt-3 pb-5" id="top">
+      <a href="#top" className="go-top">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m5 12 7-7 7 7" />
+          <path d="M12 19V5" />
+        </svg>
+      </a>
+      <Toaster position="top-center" reverseOrder={true} />
       <section className="container pb-2 d-flex sm-bottom">
         <div className="text-center w-100">
           <input
+            id="search"
             type="search"
             value={searchValue}
             placeholder="Buscar..."
             onChange={handleSearch}
-            className="inp-search "
+            className="inp-search"
           />
         </div>
         <div className="">
@@ -49,7 +83,7 @@ function Home() {
                     className="dropdown-item"
                     onClick={() => handleOrdenar("Relevancia")}
                   >
-                    Relevancia{" "}
+                    Relevancia
                   </button>
                 </li>
                 <li>
@@ -74,11 +108,11 @@ function Home() {
         </div>
       </section>
       {/* Sección de productos */}
-      <section className="container " id="productos">
-        <div className="row ">
-          {productoStore.length > 0 ? (
-            productoStore.map((prod, index) => (
-              <div className="col-6 col-md-4 col-lg-3 pt-3 " key={index}>
+      <section className="container" id="productos">
+        <div className="row">
+          {productosFiltrados.length > 0 ? (
+            productosFiltrados.map((prod) => (
+              <div className="col-6 col-md-4 col-lg-3 pt-3" key={prod.id}>
                 <a href="#" className="text-decoration-none">
                   <div className="card h-100 py-3 d-flex flex-column align-items-center justify-content-center">
                     <img
@@ -86,7 +120,7 @@ function Home() {
                       className="card-img-top"
                       alt={prod.nombre}
                     />
-                    <div className="card-body ">
+                    <div className="card-body">
                       <div className="text-center">
                         <span className="card-text py-1 oswald fs-5 fw-medium">
                           {prod.nombre}
@@ -98,16 +132,16 @@ function Home() {
                         </span>
                       </div>
                       <div className="text-center py-1">
-                        <span className="card-text descuento fw-medium open-sans fs-4 ">
+                        <span className="card-text descuento fw-medium open-sans fs-4">
                           ${prod.precio}
                         </span>
                       </div>
                     </div>
-                    <div className="d-flex justify-content-center ">
+                    <div className="d-flex justify-content-center">
                       <button
                         type="button"
                         className="btn btn-dark padding-sm-sm"
-                        onClick={() => agregarAlCarrito(prod)}
+                        onClick={() => agregarAlCarrito(prod, setCarritoStore)}
                       >
                         Agregar al carrito
                       </button>
@@ -124,4 +158,5 @@ function Home() {
     </main>
   );
 }
+
 export default Home;

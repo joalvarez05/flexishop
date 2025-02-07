@@ -1,8 +1,14 @@
 import { create } from "zustand";
 
 const useCarritoStore = create((set) => ({
-  productoStore: [],
-  setProductoStore: (productos) => set({ productoStore: productos }),
+  carritoStore: [],
+  setCarritoStore: (actualizador) =>
+    set((state) => ({
+      carritoStore:
+        typeof actualizador === "function"
+          ? actualizador(state.carritoStore)
+          : actualizador,
+    })),
 }));
 
 export default useCarritoStore;
