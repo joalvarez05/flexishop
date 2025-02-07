@@ -12,7 +12,6 @@ function Navbar() {
   
   useEffect(() => {
     if (!id) {
-      console.log("ID no identificado");
       return;
     }
     const empresaEncontrada = empresaData.find(

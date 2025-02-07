@@ -3,13 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "@/components/navbar/Navbar";
 import Home from "@/pages/Home";
 import Footer from "@/components/footer/Footer.jsx";
-// import { useEffect } from "react";
+import Carrito from "@/pages/Carrito.jsx";
 function App() {
-  // useEffect(() => {
-  //   if (window.location.pathname === "/") {
-  //     window.location.href = "https://www.uhmo.com.ar";
-  //   }
-  // }, []);
   return (
     <>
       <Routes>
@@ -23,6 +18,7 @@ function App() {
             </>
           }
         />
+        <Route path="/carrito" element={<Carrito />}></Route>
       </Routes>
       <Footer />
     </>
