@@ -4,6 +4,8 @@ import productos from "@/data/productos.json";
 import useProductoStore from "@/hooks/useProductoStore.js";
 import useCarritoStore from "@/hooks/useCarritoStore.js";
 import { Toaster } from "react-hot-toast";
+import { BsArrowUp } from "react-icons/bs";
+
 function Home() {
   const [ordenar, setOrdenar] = useState("Filtrar");
   const [searchValue, setSearchValue] = useState("");
@@ -14,16 +16,14 @@ function Home() {
   const carritoStore = useCarritoStore((state) => state.carritoStore);
   const setCarritoStore = useCarritoStore((state) => state.setCarritoStore);
 
-  // Cargar productos solo una vez
   useEffect(() => {
     setProductoStore(productos);
   }, [setProductoStore]);
 
-  // Filtrar productos según la búsqueda
   useEffect(() => {
     setProductosFiltrados(
       productoStore.filter((prod) =>
-        prod.nombre.toLowerCase().includes(searchValue.toLowerCase())
+        prod.marca.toLowerCase().includes(searchValue.toLowerCase())
       )
     );
   }, [searchValue, productoStore]);
@@ -35,23 +35,11 @@ function Home() {
   const handleOrdenar = (opcion) => {
     setOrdenar(opcion);
   };
+  console.log(carritoStore);
   return (
     <main className="pt-3 pb-5" id="top">
-      <a href="#top" className="go-top">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="m5 12 7-7 7 7" />
-          <path d="M12 19V5" />
-        </svg>
+      <a href="#top" className="go-top d-flex ">
+        <BsArrowUp />
       </a>
       <Toaster position="top-center" reverseOrder={true} />
       <section className="container pb-2 d-flex sm-bottom">

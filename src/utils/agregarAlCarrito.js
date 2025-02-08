@@ -32,7 +32,7 @@ const agregarAlCarrito = (producto, setCarritoStore) => {
     const nuevoEstado = [...estadoActual, producto];
     console.log("Producto agregado al carrito:", producto);
     toast.success("Agregado correctamente");
-
+    
     return nuevoEstado;
   });
 };

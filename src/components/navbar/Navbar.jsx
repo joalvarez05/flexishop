@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./navbar.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import empresaData from "@/data/empresa.json";
 import useEmpresaStore from "@/hooks/useEmpresaStore";
+import { BsCart3 } from "react-icons/bs";
 
 function Navbar() {
   const { id } = useParams();
   const setEmpresaActual = useEmpresaStore((state) => state.setEmpresaActual);
   const empresaActual = useEmpresaStore((state) => state.empresaActual);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   useEffect(() => {
     if (!id) {
       return;
@@ -67,6 +68,9 @@ function Navbar() {
             </div>
 
             <div>
+              <Link to="/carrito">
+                <BsCart3 color="black" size={24} />
+              </Link>
               <img
                 src="https://res.cloudinary.com/druvz15q9/image/upload/v1738764741/person-circle-outline_dq7h9q.svg"
                 alt="Avatar"
