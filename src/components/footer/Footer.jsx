@@ -5,7 +5,7 @@ function Footer() {
   const empresaActual = useEmpresaStore((state) => state.empresaActual);
   // Reemplazar por un loader general para todo el sitio
   if (!empresaActual) {
-    return <footer>Cargando empresa...</footer>;
+    return <footer>Coloca el parametro 0 o 1 despues de la url.</footer>;
   }
   return (
     <footer className="text-center bg-body-tertiary py-3">
