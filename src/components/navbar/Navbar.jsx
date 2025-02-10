@@ -10,6 +10,7 @@ function Navbar() {
   const empresaActual = useEmpresaStore((state) => state.empresaActual);
   const setEmpresaActual = useEmpresaStore((state) => state.setEmpresaActual);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     // Verificamos si ya tenemos la información en localStorage
     const empresaLocal = localStorage.getItem("empresaActual");
@@ -43,7 +44,7 @@ function Navbar() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  // console.log(empresaActual);
+
   return (
     <>
       <div className="lavanda-str pt-1 d-flex justify-content-center align-items-center hide-on-mobile-md">
@@ -80,15 +81,20 @@ function Navbar() {
             </div>
 
             <div>
-              <Link to="/carrito">
-                <BsCart3 color="black" size={24} />
-              </Link>
               <img
                 src="https://res.cloudinary.com/druvz15q9/image/upload/v1738764741/person-circle-outline_dq7h9q.svg"
                 alt="Avatar"
                 className="avatar-img"
                 title="avatar"
               />
+              <Link to="/carrito" className="mx-4 position-relative">
+                <BsCart3 color="black" size={24} />
+                <div className="d-inline relojito">
+                  <span className="text-morado fw-bold">
+                    20:00
+                  </span>
+                </div>
+              </Link>
             </div>
           </div>
           <div

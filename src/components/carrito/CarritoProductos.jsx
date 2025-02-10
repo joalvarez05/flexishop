@@ -1,19 +1,27 @@
 import React from "react";
 import "./carrito.css";
+import Swal from "sweetalert2";
 import useCarritoStore from "@/hooks/useCarritoStore";
 import { IoTrash } from "react-icons/io5";
 
 function CarritoProductos() {
   const carritoStore = useCarritoStore((state) => state.carritoStore);
   const setCarritoStore = useCarritoStore((state) => state.setCarritoStore);
-  console.log(carritoStore);
 
   const handleEliminarProducto = (prod) => {
-    console.log("Producto a eliminar:", prod);
-    const nuevoCarrito = carritoStore.filter((item) => item.id !== prod.id);
-    setCarritoStore(nuevoCarrito);
-
-    console.log("Carrito actualizado:", nuevoCarrito);
+    Swal.fire({
+      icon: "question",
+      title: "¿Eliminar Producto?",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const nuevoCarrito = carritoStore.filter((item) => item.id !== prod.id);
+        setCarritoStore(nuevoCarrito);
+        Swal.fire("Producto eliminado", "", "success");
+      }
+    });
   };
 
   const handleCantidadProducto = (prod, tipo) => {
@@ -107,7 +115,7 @@ function CarritoProductos() {
           </div>
         ))
       ) : (
-        <p>No hay productos disponibles</p>
+        <p className="fw-bold pt-2">Aún no agregaste productos a tu carrito </p>
       )}
     </div>
   );

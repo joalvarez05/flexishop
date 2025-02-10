@@ -4,7 +4,7 @@
     "nombre": "Zapatillas",
     "marca": "Nike",
     "modelo": "Revolution 6",
-    "precio": "79.999",
+    "precio": "79999",
     "stock": "6",
     "detalles": {
       "descripcion": "Revolution 6 mujer",
@@ -19,7 +19,7 @@
     "nombre": "Zapatillas",
     "marca": "Nike",
     "modelo": "Pegasus Z",
-    "precio": "74.999",
+    "precio": "74999",
     "stock": "5",
     "detalles": {
       "descripcion": "Pegasus Z",
@@ -35,7 +35,7 @@
     "nombre": "Zapatillas",
     "marca": "Adidas",
     "modelo": "Predator",
-    "precio": "104.999",
+    "precio": "104999",
     "stock": "21",
     "detalles": {
       "descripcion": "Predator Hombre",
@@ -50,7 +50,7 @@
     "nombre": "Zapatillas",
     "marca": "Nike",
     "modelo": "Pegasus Z",
-    "precio": "74.999",
+    "precio": "74999",
     "stock": "5",
     "detalles": {
       "descripcion": "Pegasus Z",
@@ -65,7 +65,7 @@
     "nombre": "Zapatillas",
     "marca": "Adidas",
     "modelo": "Grand Court",
-    "precio": "30.000",
+    "precio": "30000",
     "stock": "33",
     "detalles": {
       "descripcion": "Grand Court Lifestyle",
@@ -80,7 +80,7 @@
     "nombre": "Zapatillas",
     "marca": "Adidas",
     "modelo": "Falcon 5",
-    "precio": "56.000",
+    "precio": "56000",
     "stock": "90",
     "detalles": {
       "descripcion": "Run Falcon 5",

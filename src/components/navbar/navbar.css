@@ -5,8 +5,8 @@
 }
 
 .avatar-img {
-  max-width: 44px;
-  height: 44px;
+  max-width: 36px;
+  height: 36px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -24,4 +24,10 @@
 }
 .w-365 {
   max-width: 365px !important;
+}
+
+.relojito {
+  position: absolute;
+  top: 22px;
+  left: -8px;
 }

@@ -9,7 +9,6 @@ function Carrito() {
   const carritoStore = useCarritoStore((state) => state.carritoStore);
   let cantidadItems = carritoStore.length;
 
-
   return (
     <>
       <Navbar></Navbar>
@@ -20,7 +19,11 @@ function Carrito() {
           </Link>
           <h2 className="text-center py-3 oswald"> Shopping Cart </h2>
           <div>
-            <p className="fw-medium open-sans">{`${cantidadItems} items`}</p>
+            {cantidadItems <= 0 ? (
+              ""
+            ) : (
+              <p className="fw-medium open-sans">{`${cantidadItems} items`}</p>
+            )}
           </div>
           <div className="row">
             <div className="col-12 col-md-7 col-lg-8">

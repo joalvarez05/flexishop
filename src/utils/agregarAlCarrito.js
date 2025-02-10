@@ -20,7 +20,6 @@ const agregarAlCarrito = (producto, setCarritoStore) => {
         cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
-          // Si el producto ya existe, aumentamos la cantidad
           const nuevoEstado = estadoActual.map((item) =>
             item.id === producto.id
               ? { ...item, cantidad: item.cantidad ? item.cantidad + 1 : 1 }
@@ -34,10 +33,9 @@ const agregarAlCarrito = (producto, setCarritoStore) => {
         }
       });
 
-      return estadoActual; // Devolvemos el estado actual sin modificar en caso de cancelar
+      return estadoActual;
     }
 
-    // Si no existe, agregamos el producto con cantidad 1
     const nuevoEstado = [...estadoActual, { ...producto, cantidad: 1 }];
     localStorage.setItem("carrito", JSON.stringify(nuevoEstado));
 
