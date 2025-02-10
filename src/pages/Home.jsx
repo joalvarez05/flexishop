@@ -35,7 +35,7 @@ function Home() {
   const handleOrdenar = (opcion) => {
     setOrdenar(opcion);
   };
-  console.log(carritoStore);
+  // console.log(carritoStore);
   return (
     <main className="pt-3 pb-5" id="top">
       <a href="#top" className="go-top d-flex ">

@@ -5,10 +5,10 @@ function Breadcrumb() {
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
         <li className="breadcrumb-item text-decoration-none">
-          <span className=" text-decoration-none">Home</span>
+          <span className="titulo">Home</span>
         </li>
         <li
-          className="breadcrumb-item text-decoration-none active"
+          className="breadcrumb-item texto-secundario"
           aria-current="page"
         >
           Library

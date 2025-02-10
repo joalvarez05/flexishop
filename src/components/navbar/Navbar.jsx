@@ -7,31 +7,43 @@ import { BsCart3 } from "react-icons/bs";
 
 function Navbar() {
   const { id } = useParams();
-  const setEmpresaActual = useEmpresaStore((state) => state.setEmpresaActual);
   const empresaActual = useEmpresaStore((state) => state.empresaActual);
+  const setEmpresaActual = useEmpresaStore((state) => state.setEmpresaActual);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
-    if (!id) {
+    // Verificamos si ya tenemos la información en localStorage
+    const empresaLocal = localStorage.getItem("empresaActual");
+
+    if (empresaLocal) {
+      // Si existe, lo seteamos en el estado global
+      setEmpresaActual(JSON.parse(empresaLocal));
+      setIsLoading(false);
       return;
     }
-    const empresaEncontrada = empresaData.find(
-      (item) => item.empresa.id === id
-    );
-    if (empresaEncontrada) {
-      setEmpresaActual(empresaEncontrada.empresa);
-    } else {
-      setEmpresaActual(null);
+
+    // Si no hay en localStorage, buscamos por ID
+    if (id) {
+      const empresaEncontrada = empresaData.find(
+        (item) => item.empresa.id === id
+      );
+      if (empresaEncontrada) {
+        // Guardamos la empresa en localStorage
+        localStorage.setItem(
+          "empresaActual",
+          JSON.stringify(empresaEncontrada.empresa)
+        );
+        // Seteamos la empresa en el estado global
+        setEmpresaActual(empresaEncontrada.empresa);
+      }
     }
 
     setIsLoading(false);
   }, [id, setEmpresaActual]);
 
-  // Reemplazar por un loader general para toda la app
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
+  // console.log(empresaActual);
   return (
     <>
       <div className="lavanda-str pt-1 d-flex justify-content-center align-items-center hide-on-mobile-md">

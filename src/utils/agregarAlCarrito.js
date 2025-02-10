@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 const agregarAlCarrito = (producto, setCarritoStore) => {
   if (!producto || typeof setCarritoStore !== "function") {
     console.warn("Producto inválido o función incorrecta");
-
     return;
   }
 
@@ -21,18 +20,30 @@ const agregarAlCarrito = (producto, setCarritoStore) => {
         cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
-          setCarritoStore([...estadoActual, producto]);
+          // Si el producto ya existe, aumentamos la cantidad
+          const nuevoEstado = estadoActual.map((item) =>
+            item.id === producto.id
+              ? { ...item, cantidad: item.cantidad ? item.cantidad + 1 : 1 }
+              : item
+          );
+
+          localStorage.setItem("carrito", JSON.stringify(nuevoEstado));
+          setCarritoStore(nuevoEstado);
           toast.success("Agregado correctamente");
           console.log("Se agregó otra unidad al carrito:", producto);
         }
       });
 
-      return estadoActual;
+      return estadoActual; // Devolvemos el estado actual sin modificar en caso de cancelar
     }
-    const nuevoEstado = [...estadoActual, producto];
+
+    // Si no existe, agregamos el producto con cantidad 1
+    const nuevoEstado = [...estadoActual, { ...producto, cantidad: 1 }];
+    localStorage.setItem("carrito", JSON.stringify(nuevoEstado));
+
     console.log("Producto agregado al carrito:", producto);
     toast.success("Agregado correctamente");
-    
+
     return nuevoEstado;
   });
 };
