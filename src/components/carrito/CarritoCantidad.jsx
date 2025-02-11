@@ -8,7 +8,7 @@ function CarritoCantidad() {
   const carritoStore = useCarritoStore((state) => state.carritoStore);
   const total = calcularPrecioTotal(carritoStore);
   return (
-    <div className="text-center w-100">
+    <div className="text-center w-100 border border-danger">
       <div className="container mt-3">
         <div className="mt-2 bottom-line pb-3">
           {carritoStore <= 0 ? (

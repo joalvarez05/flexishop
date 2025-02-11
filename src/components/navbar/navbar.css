@@ -31,3 +31,42 @@
   top: 22px;
   left: -8px;
 }
+
+.custom-modal {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  border: none;
+}
+
+.modal-title {
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-body {
+  font-size: 16px;
+  color: #444;
+}
+
+.btn-close {
+  filter: invert(0.3);
+}
+
+.btn-dark {
+  background: #1a1a1a;
+  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-dark:hover {
+  background: #000;
+}
+@media (max-width: 991.5px) {
+  .sm-hidden {
+    display: none;
+  }
+}

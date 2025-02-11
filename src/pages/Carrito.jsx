@@ -3,7 +3,6 @@ import CarritoProductos from "@/components/carrito/CarritoProductos";
 import CarritoCantidad from "@/components/carrito/CarritoCantidad";
 import useCarritoStore from "@/hooks/useCarritoStore";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
-import { Link } from "react-router-dom";
 import Navbar from "@/components/navbar/Navbar.jsx";
 import { useCarritoWatcher } from "@/hooks/useCarritoStore";
 
@@ -16,11 +15,10 @@ function Carrito() {
   return (
     <>
       <Navbar></Navbar>
-      <section className="pt-3 pb-5">
+      <section className="pt-3 pb-5" id="carrito">
         <div className="container">
-          <Link to="/1" className="text-decoration-none">
-            <Breadcrumb></Breadcrumb>
-          </Link>
+          <Breadcrumb></Breadcrumb>
+
           <h2 className="text-center py-3 oswald"> Shopping Cart </h2>
           <div>
             {cantidadItems <= 0 ? (
@@ -30,10 +28,10 @@ function Carrito() {
             )}
           </div>
           <div className="row">
-            <div className="col-12 col-md-7 col-lg-8">
+            <div className="col-12 col-md-7 col-lg-8 d-flex mt-3 align-items-center">
               <CarritoProductos></CarritoProductos>
             </div>
-            <div className="col-12 col-md-5 col-lg-4 d-flex mt-3 align-items-center">
+            <div className="col-12 col-md-5 col-lg-4 mt-3">
               <CarritoCantidad></CarritoCantidad>
             </div>
           </div>
