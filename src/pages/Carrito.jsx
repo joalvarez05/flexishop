@@ -5,7 +5,11 @@ import useCarritoStore from "@/hooks/useCarritoStore";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/navbar/Navbar.jsx";
+import { useCarritoWatcher } from "@/hooks/useCarritoStore";
+
 function Carrito() {
+  useCarritoWatcher();
+
   const carritoStore = useCarritoStore((state) => state.carritoStore);
   let cantidadItems = carritoStore.length;
 
@@ -29,7 +33,7 @@ function Carrito() {
             <div className="col-12 col-md-7 col-lg-8">
               <CarritoProductos></CarritoProductos>
             </div>
-            <div className="col-12 col-md-5 col-lg-4">
+            <div className="col-12 col-md-5 col-lg-4 d-flex mt-3 align-items-center">
               <CarritoCantidad></CarritoCantidad>
             </div>
           </div>

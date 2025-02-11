@@ -1,7 +1,10 @@
 import React from "react";
-
 function Producto() {
-  return <div>Producto</div>;
+  return (
+    <div>
+      
+    </div>
+  );
 }
 
 export default Producto;

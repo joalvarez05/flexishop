@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import agregarAlCarrito from "@/utils/agregarAlCarrito";
 import productos from "@/data/productos.json";
 import useProductoStore from "@/hooks/useProductoStore.js";
-import useCarritoStore from "@/hooks/useCarritoStore.js";
+import useCarritoStore from "@/hooks/useCarritoStore.jsx";
 import { Toaster } from "react-hot-toast";
 import { BsArrowUp } from "react-icons/bs";
 

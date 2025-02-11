@@ -91,7 +91,7 @@ function Navbar() {
                 <BsCart3 color="black" size={24} />
                 <div className="d-inline relojito">
                   <span className="text-morado fw-bold">
-                    20:00
+                    30:00
                   </span>
                 </div>
               </Link>

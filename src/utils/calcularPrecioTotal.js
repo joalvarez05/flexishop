@@ -12,3 +12,16 @@ export const calcularPrecioTotal = (carritoStore) => {
 
   return formatoPesoArgentino().format(total);
 };
+
+export const formatearPrecio = (prod) => {
+  const precioTotal = prod.precio * (prod.cantidad || 1);
+
+  const formatoPesoArgentino = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+
+  return formatoPesoArgentino.format(precioTotal);
+};

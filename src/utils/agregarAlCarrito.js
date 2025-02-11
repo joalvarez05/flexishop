@@ -1,49 +1,57 @@
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import useCarritoStore from "@/hooks/useCarritoStore"; // Importa el store directamente
 
-const agregarAlCarrito = (producto, setCarritoStore) => {
-  if (!producto || typeof setCarritoStore !== "function") {
-    console.warn("Producto inválido o función incorrecta");
+const agregarAlCarrito = (producto) => {
+  if (!producto) {
+    console.warn("Producto inválido");
     return;
   }
 
-  setCarritoStore((estadoActual) => {
-    const existe = estadoActual.some((item) => item.id === producto.id);
+  const { carritoStore, setCarritoStore } = useCarritoStore.getState(); // Obtenemos el estado actual
 
-    if (existe) {
-      Swal.fire({
-        icon: "question",
-        title: "Este producto ya está en el carrito.",
-        text: "¿Deseas agregar otra unidad?",
-        showCancelButton: true,
-        confirmButtonText: "Sí, agregar",
-        cancelButtonText: "Cancelar",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          const nuevoEstado = estadoActual.map((item) =>
-            item.id === producto.id
-              ? { ...item, cantidad: item.cantidad ? item.cantidad + 1 : 1 }
-              : item
-          );
+  const tiempoActual = Date.now();
 
-          localStorage.setItem("carrito", JSON.stringify(nuevoEstado));
-          setCarritoStore(nuevoEstado);
-          toast.success("Agregado correctamente");
-          console.log("Se agregó otra unidad al carrito:", producto);
-        }
-      });
+  // Actualizamos la fecha de agregado de todos los productos en el carrito
+  const nuevoCarrito = carritoStore.map((item) => ({
+    ...item,
+    fechaDeAgregado: tiempoActual,
+  }));
 
-      return estadoActual;
-    }
+  const existe = nuevoCarrito.some((item) => item.id === producto.id);
 
-    const nuevoEstado = [...estadoActual, { ...producto, cantidad: 1 }];
-    localStorage.setItem("carrito", JSON.stringify(nuevoEstado));
+  if (existe) {
+    Swal.fire({
+      icon: "question",
+      title: "Este producto ya está en el carrito.",
+      text: "¿Deseas agregar otra unidad?",
+      showCancelButton: true,
+      confirmButtonText: "Sí, agregar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const carritoActualizado = nuevoCarrito.map((item) =>
+          item.id === producto.id
+            ? { ...item, cantidad: item.cantidad + 1 }
+            : item
+        );
 
-    console.log("Producto agregado al carrito:", producto);
-    toast.success("Agregado correctamente");
+        setCarritoStore(carritoActualizado);
+        toast.success("Agregado correctamente");
+      }
+    });
 
-    return nuevoEstado;
-  });
+    return;
+  }
+
+  // Si es un nuevo producto, lo agregamos al carrito
+  const carritoActualizado = [
+    ...nuevoCarrito,
+    { ...producto, cantidad: 1, fechaDeAgregado: tiempoActual },
+  ];
+
+  setCarritoStore(carritoActualizado);
+  toast.success("Agregado correctamente");
 };
 
 export default agregarAlCarrito;
