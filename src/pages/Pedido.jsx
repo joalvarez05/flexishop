@@ -8,11 +8,14 @@ import { calcularPrecioTotal } from "@/utils/calcularPrecioTotal.js";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb.jsx";
 import { useCarritoWatcher } from "@/hooks/useCarritoStore";
 import { eliminarCarrito } from "@/utils/eliminarCarrito.js";
-
+import horaActual from "@/utils/formatearFecha";
 function Pedido() {
   useCarritoWatcher();
   const carritoStore = useCarritoStore((state) => state.carritoStore);
   const total = calcularPrecioTotal(carritoStore);
+  const regexNum = /^\d{7,}$/;
+  const regexNombre = /^[A-Za-z]+$/;
+
   const {
     register,
     handleSubmit,
@@ -20,7 +23,6 @@ function Pedido() {
     formState: { errors },
   } = useForm();
 
-  const regexNum = /^\d{7,}$/;
   const onSubmit = async (data) => {
     if (
       !data.nombre ||
@@ -32,11 +34,23 @@ function Pedido() {
       toast.error("Por favor, complete todos los campos.");
       return;
     }
-    const mensaje = `*Pedido de ${data.nombre}*%0A
-    Teléfono: ${data.telefono}%0A
-    Forma de Entrega: ${data.delivery}%0A
-    Forma de Pago: ${data.pago}%0A
-    Total: ${total}`;
+
+    const productosMensaje = carritoStore
+      .map((producto) => {
+        return `${producto.nombre}%0A${producto.marca}%0A${producto.modelo}%0ACantidad: ${producto.cantidad}%0A`;
+      })
+      .join("%0A");
+
+    const mensaje = `_¡Hola! Te paso el resumen de mi pedido_%0A🗓️ Fecha: ${horaActual()}%0A👤 Nombre: ${
+      data.nombre
+    }%0A📞 Teléfono: ${data.telefono}%0A💲 Forma de Pago: ${
+      data.pago
+    }%0A🟰 Total: ${total}%0A
+    %0A
+    %0A🚚 Forma de Entrega: ${data.delivery}%0A📍Dirección:%0AUbicación:%0A
+    %0A*Mi pedido es:*%0A${productosMensaje}
+    %0A*Total: ${total}*
+    %0A_Espero tu respuesta para confirmar mi pedido_`;
 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const telefono = "+5493813994145";
@@ -75,15 +89,25 @@ function Pedido() {
                         name="nombre"
                         id="nombre"
                         type="text"
+                        placeholder="Tu nombre ..."
                         className={`form-control ${
                           errors.nombre ? "is-invalid" : ""
                         }`}
                         {...register("nombre", {
                           required: "Este campo es requerido",
+                          pattern: {
+                            value: regexNombre,
+                            message:
+                              "El nombre no puede contener numeros ni simbolos.",
+                          },
                           minLength: {
                             value: 3,
                             message:
                               "El nombre completo debe tener al menos 3 caracteres",
+                          },
+                          maxLength: {
+                            value: 40,
+                            message: "El nombre es demasiado largo",
                           },
                         })}
                       />
@@ -105,6 +129,7 @@ function Pedido() {
                       <input
                         name="telefono"
                         id="telefono"
+                        placeholder="Tu teléfono ..."
                         type="tel"
                         className={`form-control ${
                           errors.telefono ? "is-invalid" : ""
