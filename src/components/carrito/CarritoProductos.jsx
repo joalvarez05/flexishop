@@ -48,7 +48,7 @@ function CarritoProductos() {
     <div>
       {carritoStore.length > 0 ? (
         carritoStore.map((prod) => (
-          <div key={prod.id} className="container card mt-3">
+          <div key={prod.id} className="container card sombra mt-3">
             <div className="mt-2 bottom-line pb-3">
               <div className="row">
                 <div className="col-lg-3 d-flex justify-content-center">
@@ -78,7 +78,6 @@ function CarritoProductos() {
                       <button
                         type="button"
                         title="Aumentar cantidad"
-
                         className="btn-quantity btn btn-default"
                         onClick={() =>
                           handleCantidadProducto(prod, "incrementar")

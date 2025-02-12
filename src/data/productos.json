@@ -89,5 +89,20 @@
     },
     "imagenes": "https://www.opensports.com.ar/media/catalog/product/cache/a6c7e1c8e1ee3bec21df5432c2a808a3/i/h/ih7758_0.jpg",
     "alt": "zapatillas adidas run falcon 5"
+  },
+  {
+    "id": "015",
+    "nombre": "Zapatillas",
+    "marca": "All star",
+    "modelo": "Converse",
+    "precio": "76000",
+    "stock": "33",
+    "detalles": {
+      "descripcion": "Converse negras",
+      "color": "Negro",
+      "talla": "44"
+    },
+    "imagenes": "https://centerdeportes.com.ar/182-large_default/zapatillas-converse-ct-all-star-plataforma-lift-ox-negra.jpg",
+    "alt": "zapatillas all star converse"
   }
 ]

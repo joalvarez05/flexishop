@@ -134,7 +134,12 @@ p {
 .card-img-top {
   width: 80% !important;
 }
-
+input::placeholder {
+  font-family: "Oswald";
+}
+.espaciado {
+  letter-spacing: 1.15px;
+}
 /* ---------------------------------------------------------------------- */
 /*                             MEDIA QUERIES                         */
 /* -------------------------------------------------------------------- */
@@ -143,6 +148,9 @@ p {
     padding: 5px;
     font-size: 0.9rem;
     margin: 0;
+  }
+  .espaciado {
+    letter-spacing: normal;
   }
 }
 @media (max-width: 768px) {

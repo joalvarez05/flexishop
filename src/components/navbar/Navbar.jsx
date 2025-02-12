@@ -53,7 +53,7 @@ const Navbar = () => {
           Vender sin comisiones nunca ha sido tan fácil
         </span>
       </div>
-      <header className="underline-nav">
+      <header className="underline-nav" id="top">
         <nav className="navbar navbar-expand-lg ">
           <div className="container-fluid py-3 d-flex justify-content-between align-items-center ">
             <div className="d-flex align-items-center ">
@@ -70,7 +70,7 @@ const Navbar = () => {
               <div className="ms-5">
                 <button
                   type="button"
-                  className="btn btn-dark sm-hidden"
+                  className="btn btn-dark sm-hidden open-sans fw-medium"
                   data-bs-toggle="modal"
                   data-bs-target="#infoModal"
                 >
@@ -124,7 +124,6 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-
               <div className="logo-brand">
                 <img
                   src={logo || <RxAvatar />}
@@ -134,10 +133,7 @@ const Navbar = () => {
                 />
               </div>
             </div>
-
             <div>
-              <RxAvatar />
-
               <Link to="/carrito" className="mx-4 position-relative">
                 <BsCart3 color="black" size={24} aria-label="Ir al carrito" />
                 <div className="d-inline relojito">

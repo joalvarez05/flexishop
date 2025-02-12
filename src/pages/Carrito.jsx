@@ -15,7 +15,7 @@ function Carrito() {
   return (
     <>
       <Navbar></Navbar>
-      <section className="pt-3 pb-5" id="carrito">
+      <section className="pt-3 pb-5 bg-light" id="carrito">
         <div className="container">
           <Breadcrumb></Breadcrumb>
 
