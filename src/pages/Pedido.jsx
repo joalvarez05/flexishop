@@ -2,6 +2,7 @@ import React from "react";
 import toast from "react-hot-toast";
 import Navbar from "@/components/navbar/Navbar.jsx";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { FaRegUser, FaPhone, FaTruck, FaCreditCard } from "react-icons/fa";
 import useCarritoStore from "@/hooks/useCarritoStore";
 import { calcularPrecioTotal } from "@/utils/calcularPrecioTotal.js";
@@ -11,6 +12,7 @@ import { eliminarCarrito } from "@/utils/eliminarCarrito.js";
 import horaActual from "@/utils/formatearFecha";
 function Pedido() {
   useCarritoWatcher();
+  const navigate = useNavigate();
   const carritoStore = useCarritoStore((state) => state.carritoStore);
   const total = calcularPrecioTotal(carritoStore);
   const regexNum = /^\d{7,}$/;
@@ -61,6 +63,7 @@ function Pedido() {
     window.open(url, "_blank", "noopener noreferrer");
     reset();
     eliminarCarrito(useCarritoStore.getState().setCarritoStore);
+    navigate("/1");
   };
 
   return (
