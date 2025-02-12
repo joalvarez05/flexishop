@@ -29,7 +29,7 @@ function CarritoCantidad() {
           <Link to="/pedido" onClick={handleRedirection}>
             <button
               type="button"
-              className="btn btn-primary w-100"
+              className="btn btn-primary w-100 fw-bold open-sans"
               disabled={carritoStore.length === 0}
             >
               Confirmar pedido
