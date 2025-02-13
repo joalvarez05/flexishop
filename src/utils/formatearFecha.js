@@ -9,7 +9,6 @@ export const horaActual = () => {
   const minutos = String(ahora.getMinutes()).padStart(2, "0");
 
   const fechaYHora = `${dia}/${mes}/${anio} - ${horas}:${minutos}hs`;
-  console.log(fechaYHora);
   return fechaYHora;
 };
 

@@ -110,6 +110,7 @@ p {
   background-color: #f1f1f1;
   box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
   transition: 300ms ease-in-out;
+  font-family: 'Oswald';
 }
 .inp-search:focus {
   background-color: #ffffff;
@@ -134,9 +135,7 @@ p {
 .card-img-top {
   width: 80% !important;
 }
-input::placeholder {
-  font-family: "Oswald";
-}
+
 .espaciado {
   letter-spacing: 1.15px;
 }

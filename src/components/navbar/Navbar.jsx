@@ -129,7 +129,7 @@ const Navbar = () => {
                   src={logo || <RxAvatar />}
                   title={nombre || "logo"}
                   alt={`logo de ${nombre || "empresa"}`}
-                  style={{ maxWidth: "44px", borderRadius: "50%" }}
+                  style={{ maxWidth: "50px", borderRadius: "50%" }}
                 />
               </div>
             </div>

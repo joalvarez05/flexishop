@@ -10,56 +10,75 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb.jsx";
 import { useCarritoWatcher } from "@/hooks/useCarritoStore";
 import { eliminarCarrito } from "@/utils/eliminarCarrito.js";
 import horaActual from "@/utils/formatearFecha";
+
 function Pedido() {
   useCarritoWatcher();
   const navigate = useNavigate();
   const carritoStore = useCarritoStore((state) => state.carritoStore);
   const total = calcularPrecioTotal(carritoStore);
   const regexNum = /^\d{7,}$/;
-  const regexNombre = /^[A-Za-z]+$/;
-
+  const regexNombre = /^[A-Za-zÁáÉéÍíÓóÚúÜüÑñ ]+$/;
   const {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm();
 
+  const deliveryMethod = watch("delivery");
+
+  const sanitizarInput = (text) => {
+    return text.replace(/[^a-zA-Z0-9ÁáÉéÍíÓóÚúÜüÑñ ]/g, "").trim();
+  };
+
   const onSubmit = async (data) => {
+    if (total <= 0) {
+      alert("Tu carrito está en 0.");
+      return;
+    }
+
+    const nombreSanitizado = sanitizarInput(data.nombre);
+    const telefonoSanitizado = sanitizarInput(data.telefono);
+    const direccionSanitizada = data.direccion
+      ? sanitizarInput(data.direccion)
+      : "";
+    const localidadSanitizada = data.localidad
+      ? sanitizarInput(data.localidad)
+      : "";
+
     if (
-      !data.nombre ||
-      !data.telefono ||
+      !nombreSanitizado ||
+      !telefonoSanitizado ||
       !data.delivery ||
       !data.pago ||
       !total
     ) {
-      toast.error("Por favor, complete todos los campos.");
       return;
     }
 
     const productosMensaje = carritoStore
       .map((producto) => {
-        return `${producto.nombre}%0A${producto.marca}%0A${producto.modelo}%0ACantidad: ${producto.cantidad}%0A`;
+        return `${sanitizarInput(producto.nombre)}%0A${sanitizarInput(
+          producto.marca
+        )}%0A${sanitizarInput(producto.modelo)}%0ACantidad: ${
+          producto.cantidad
+        }%0A`;
       })
       .join("%0A");
 
-    const mensaje = `_¡Hola! Te paso el resumen de mi pedido_%0A🗓️ Fecha: ${horaActual()}%0A👤 Nombre: ${
-      data.nombre
-    }%0A📞 Teléfono: ${data.telefono}%0A💲 Forma de Pago: ${
+    const mensaje = `_¡Hola! Te paso el resumen de mi pedido_%0A🗓️ Fecha: ${horaActual()}%0A👤 Nombre: ${nombreSanitizado}%0A📞 Teléfono: ${telefonoSanitizado}%0A💲 Forma de Pago: ${
       data.pago
-    }%0A🟰 Total: ${total}%0A
-    %0A
-    %0A🚚 Forma de Entrega: ${data.delivery}%0A📍Dirección:%0AUbicación:%0A
-    %0A*Mi pedido es:*%0A${productosMensaje}
-    %0A*Total: ${total}*
-    %0A_Espero tu respuesta para confirmar mi pedido_`;
+    }%0A🟰 Total: ${total}%0A%0A🚚 Forma de Entrega: ${
+      data.delivery
+    }%0A📍Dirección: ${direccionSanitizada}%0ALocalidad: ${localidadSanitizada}%0A%0A*Mi pedido es:*%0A${productosMensaje}%0A*Total: ${total}*%0A_Espero tu respuesta para confirmar mi pedido_`;
 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const telefono = "+5493813994145";
-
     const url = isMobile
       ? `https://api.whatsapp.com/send?phone=${telefono}&text=${mensaje}`
       : `https://web.whatsapp.com/send?phone=${telefono}&text=${mensaje}`;
+
     window.open(url, "_blank", "noopener noreferrer");
     reset();
     eliminarCarrito(useCarritoStore.getState().setCarritoStore);
@@ -71,7 +90,7 @@ function Pedido() {
       <Navbar />
 
       <div className="container pt-3 pb-5">
-        <Breadcrumb></Breadcrumb>
+        <Breadcrumb />
         <div className="py-5">
           <div className="row justify-content-center">
             <div className="col-md-8 col-lg-6">
@@ -159,7 +178,7 @@ function Pedido() {
                         htmlFor="delivery"
                       >
                         <FaTruck size={18} />
-                        Forma de Entrega
+                        Forma de Entrega *
                       </label>
                       <select
                         id="delivery"
@@ -168,7 +187,7 @@ function Pedido() {
                           errors.delivery ? "is-invalid" : ""
                         }`}
                         {...register("delivery", {
-                          required: "Este campo es requerido",
+                          required: "Indica una opción",
                         })}
                       >
                         <option value="">Seleccione una opción</option>
@@ -183,6 +202,71 @@ function Pedido() {
                         </div>
                       )}
                     </div>
+                    {deliveryMethod === "Delivery" && (
+                      <>
+                        <div className="mb-3">
+                          <label htmlFor="direccion" className="form-label">
+                            Dirección de entrega *
+                          </label>
+                          <input
+                            type="text"
+                            id="direccion"
+                            name="direccion"
+                            className={`form-control ${
+                              errors.direccion ? "is-invalid" : ""
+                            }`}
+                            {...register("direccion", {
+                              required: "La dirección es requerida",
+                              minLength: {
+                                value: 3,
+                                message:
+                                  "La dirección debe contener al menos 3 caracteres",
+                              },
+                              maxLength: {
+                                value: 50,
+                                message: "La dirección es demasiado larga",
+                              },
+                            })}
+                          />
+                          {errors.direccion && (
+                            <div className="invalid-feedback">
+                              {errors.direccion.message}
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="mb-3">
+                          <label htmlFor="localidad" className="form-label">
+                            Localidad *
+                          </label>
+                          <input
+                            type="text"
+                            id="localidad"
+                            name="localidad"
+                            className={`form-control ${
+                              errors.localidad ? "is-invalid" : ""
+                            }`}
+                            {...register("localidad", {
+                              required: "La dirección es requerida",
+                              minLength: {
+                                value: 3,
+                                message:
+                                  "La localidad debe contener al menos 3 caracteres",
+                              },
+                              maxLength: {
+                                value: 50,
+                                message: "La localidad es demasiado larga",
+                              },
+                            })}
+                          />
+                          {errors.localidad && (
+                            <div className="invalid-feedback">
+                              {errors.localidad.message}
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    )}
 
                     <div className="mb-3">
                       <label
@@ -213,10 +297,11 @@ function Pedido() {
                         </div>
                       )}
                     </div>
+
                     <div className="d-flex justify-content-between">
                       <h5>Total: {total}</h5>
-                      <span className="fw-bold fs-5"></span>
                     </div>
+
                     <button type="submit" className="btn btn-primary w-100">
                       Enviar
                     </button>
