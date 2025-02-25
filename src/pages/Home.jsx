@@ -79,7 +79,7 @@ function Home() {
       </section>
 
       <section className="container mt-4" id="productos">
-        <div className="row gap-1 m-0 container-mid">
+        <div className="row container-mid ">
           {productosFiltrados.length > 0 ? (
             productosFiltrados.map((prod, index) => (
               <div

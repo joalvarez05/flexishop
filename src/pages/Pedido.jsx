@@ -98,7 +98,7 @@ function Pedido() {
                 <div className="card-body">
                   <h2 className="card-title text-center mb-4">Tu Pedido</h2>
 
-                  <form onSubmit={handleSubmit(onSubmit)}>
+                  <form onSubmit={handleSubmit(onSubmit)} autoComplete="on">
                     <div className="mb-3">
                       <label
                         className="form-label d-flex align-items-center gap-2"
@@ -109,6 +109,7 @@ function Pedido() {
                       </label>
                       <input
                         name="nombre"
+                        autoComplete="name"
                         id="nombre"
                         type="text"
                         placeholder="Tu nombre ..."
@@ -151,6 +152,7 @@ function Pedido() {
                       <input
                         name="telefono"
                         id="telefono"
+                        autoComplete="tel"
                         placeholder="Tu teléfono ..."
                         type="tel"
                         className={`form-control ${
@@ -211,6 +213,7 @@ function Pedido() {
                           <input
                             type="text"
                             id="direccion"
+                            autoComplete="street-address"
                             name="direccion"
                             className={`form-control ${
                               errors.direccion ? "is-invalid" : ""
@@ -242,6 +245,7 @@ function Pedido() {
                           <input
                             type="text"
                             id="localidad"
+                            autoComplete="address-level1"
                             name="localidad"
                             className={`form-control ${
                               errors.localidad ? "is-invalid" : ""

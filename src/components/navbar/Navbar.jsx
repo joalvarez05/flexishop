@@ -70,7 +70,7 @@ const Navbar = () => {
               <div className="ms-5">
                 <button
                   type="button"
-                  className="btn btn-dark sm-hidden open-sans fw-medium"
+                  className="btn btn-outline-info text-black sm-hidden open-sans fw-medium"
                   data-bs-toggle="modal"
                   data-bs-target="#infoModal"
                 >
