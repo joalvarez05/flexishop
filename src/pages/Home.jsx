@@ -78,42 +78,52 @@ function Home() {
         </div>
       </section>
 
-      <section className="container" id="productos">
-        <div className="row">
+      <section className="container mt-4" id="productos">
+        <div className="row gap-1 m-0 container-mid">
           {productosFiltrados.length > 0 ? (
             productosFiltrados.map((prod, index) => (
-              <div className="col-4 col-md-3 col-lg-2 pt-3" key={prod.id}>
-                <a href="#" className="text-decoration-none">
-                  <div className="card h-100 py-3 d-flex flex-column align-items-center justify-content-center">
-                    <img
-                      src={prod.imagenes}
-                      className="card-img-top"
-                      alt={prod.alt}
-                      loading={index < 3 ? "eager" : "lazy"}
-                      fetchpriority={index < 3 ? "high" : "auto"}
-                    />
-                    <div className="card-body text-center">
-                      <span className="card-text py-1 oswald fs-5 fw-medium">
-                        {prod.marca}
-                      </span>
-                      <span className="texto-secundario fs-6 open-sans fw-medium">
-                        {prod.detalles.descripcion}
-                      </span>
-                      <span className="card-text descuento fw-medium open-sans fs-6">
-                        ${prod.precio}
-                      </span>
-                    </div>
-                    <div className="d-flex justify-content-center">
-                      <button
-                        type="button"
-                        className="btn btn-dark padding-sm-sm oswald espaciado "
-                        onClick={() => agregarAlCarrito(prod, setCarritoStore)}
-                      >
-                        Agregar al carrito
-                      </button>
-                    </div>
+              <div
+                className="row tarjeta pb-2 rounded-3 pt-lg-3 col-md-6 col-lg-4 me-lg-2 me-sm-0"
+                key={prod.id}
+              >
+                <div className="col-4 p-0 col-md-4 col-lg-4 pt-3 m-0">
+                  {/* <a href="#" className="text-decoration-none"> */}
+                  <img
+                    src={prod.imagenes}
+                    className="card-img-top"
+                    alt={prod.alt}
+                    loading={index < 3 ? "eager" : "lazy"}
+                    fetchpriority={index < 3 ? "high" : "auto"}
+                  />
+                </div>
+                <div className="col-8 col-lg-8 col-md-3 card-body d-flex text-center ">
+                  <span className="card-text pt-1 oswald fs-5 fw-medium">
+                    {prod.marca}
+                  </span>
+                  <span className="texto-secundario fs-6 open-sans fw-medium">
+                    {prod.detalles.descripcion}
+                  </span>
+                  <span className="card-text fw-bold open-sans fs-6">
+                    ${prod.precio}
+                  </span>
+                  <div className="d-flex justify-content-center">
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-success d-block d-sm-none"
+                      onClick={() => agregarAlCarrito(prod, setCarritoStore)}
+                    >
+                      Agregar al carrito
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-success d-none d-sm-block"
+                      onClick={() => agregarAlCarrito(prod, setCarritoStore)}
+                    >
+                      Agregar al carrito
+                    </button>
                   </div>
-                </a>
+                </div>
+                {/* </a> */}
               </div>
             ))
           ) : (
