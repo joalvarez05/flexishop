@@ -4,8 +4,9 @@ import { IoTrash } from "react-icons/io5";
 import { formatearPrecio } from "@/utils/calcularPrecioTotal";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-
+import { useNavigate } from "react-router-dom";
 function CarritoProductos() {
+  const navigate = useNavigate();
   const carritoStore = useCarritoStore((state) => state.carritoStore);
   const setCarritoStore = useCarritoStore((state) => state.setCarritoStore);
 
@@ -48,18 +49,18 @@ function CarritoProductos() {
     <div>
       {carritoStore.length > 0 ? (
         carritoStore.map((prod) => (
-          <div key={prod.id} className="container card sombra mt-3">
-            <div className="mt-2 bottom-line pb-3">
+          <div key={prod.id} className="container card sombra mt-lg-2 mt-md-2 mt-1">
+            <div className="mt-1 bottom-line">
               <div className="row">
-                <div className="col-lg-3 d-flex justify-content-center">
+                <div className="col-lg-3 col-3 d-flex justify-content-center">
                   <img
                     src={prod.imagenes}
                     alt={prod.alt}
                     className="img-carrito"
                   />
                 </div>
-                <div className="col-lg-9">
-                  <div className="mt-3 mt-lg-0 d-flex align-items-center justify-content-between">
+                <div className="col-lg-9 col-9 mb-lg-1">
+                  <div className="mt-2 mt-lg-0 d-flex align-items-center justify-content-between">
                     <h4>
                       {prod.marca} {prod.modelo}
                     </h4>
@@ -87,32 +88,21 @@ function CarritoProductos() {
                       </button>
                     </div>
                   </div>
-                  <div className="fw-lighter my-1">
-                    {prod.detalles.descripcion}
-                  </div>
-                  <div className="fw-lighter my-1">
-                    Color: {prod.detalles.color}
-                  </div>
-                  <div className="fw-lighter my-1">
-                    Talle: {prod.detalles.talla}
-                  </div>
-                  <div className="d-flex gap-1 my-1 align-items-center justify-content-between">
+                  <div className="fw-lighter">{prod.detalles.descripcion}</div>
+                  <div className="fw-lighter">Color: {prod.detalles.color}</div>
+                  <div className="fw-lighter">Talle: {prod.detalles.talla}</div>
+                  <div className="d-flex gap-1 align-items-center justify-content-between">
+                    <h5 className="descuento fs-5">{formatearPrecio(prod)}</h5>
                     <button
                       type="button"
                       title="Borrar articulo"
-                      className="btn btn-outline-danger titulo"
+                      className="btn btn-outline-danger btn-sm titulo"
                       onClick={() => {
                         eliminarProducto(prod);
                       }}
                     >
                       <IoTrash className="mx-2" />
-                      Borrar item
                     </button>
-                  </div>
-                  <div>
-                    <h5 className="pt-3 descuento fs-4">
-                      {formatearPrecio(prod)}
-                    </h5>
                   </div>
                 </div>
               </div>
@@ -120,7 +110,17 @@ function CarritoProductos() {
           </div>
         ))
       ) : (
-        <p className="fw-bold pt-2">Aún no agregaste productos a tu carrito </p>
+        <>
+          <div className="d-flex align-items-center justify-content-center flex-column">
+            <p className="fw-bold py-2">
+              Aún no agregaste productos a tu carrito.
+            </p>
+            <button onClick={() => navigate(-1)} className="btn btn-primary">
+              {" "}
+              Ver productos
+            </button>
+          </div>
+        </>
       )}
     </div>
   );

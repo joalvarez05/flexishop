@@ -19,7 +19,7 @@ function Carrito() {
         <div className="container">
           <Breadcrumb></Breadcrumb>
 
-          <h2 className="text-center py-3 oswald"> Shopping Cart </h2>
+          <h2 className="text-center py-3 oswald"> Mi Carrito </h2>
           <div>
             {cantidadItems <= 0 ? (
               ""

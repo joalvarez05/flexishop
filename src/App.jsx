@@ -5,6 +5,7 @@ import Home from "@/pages/Home";
 import Footer from "@/components/footer/Footer.jsx";
 import Carrito from "@/pages/Carrito.jsx";
 import Pedido from "@/pages/Pedido.jsx";
+import Producto from "@/pages/Producto.jsx";
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
         />
         <Route path="/carrito" element={<Carrito />}></Route>
         <Route path="/pedido" element={<Pedido />}></Route>
+        <Route path="/producto" element={<Producto />}></Route>
       </Routes>
       <Footer />
     </>

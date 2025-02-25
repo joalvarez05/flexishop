@@ -82,7 +82,7 @@ function Home() {
         <div className="row">
           {productosFiltrados.length > 0 ? (
             productosFiltrados.map((prod, index) => (
-              <div className="col-6 col-md-4 col-lg-3 pt-3" key={prod.id}>
+              <div className="col-4 col-md-3 col-lg-2 pt-3" key={prod.id}>
                 <a href="#" className="text-decoration-none">
                   <div className="card h-100 py-3 d-flex flex-column align-items-center justify-content-center">
                     <img
@@ -96,17 +96,17 @@ function Home() {
                       <span className="card-text py-1 oswald fs-5 fw-medium">
                         {prod.marca}
                       </span>
-                      <span className="texto-secundario fs-5 open-sans fw-medium">
+                      <span className="texto-secundario fs-6 open-sans fw-medium">
                         {prod.detalles.descripcion}
                       </span>
-                      <span className="card-text descuento fw-medium open-sans fs-4">
+                      <span className="card-text descuento fw-medium open-sans fs-6">
                         ${prod.precio}
                       </span>
                     </div>
                     <div className="d-flex justify-content-center">
                       <button
                         type="button"
-                        className="btn btn-dark padding-sm-sm oswald espaciado"
+                        className="btn btn-dark padding-sm-sm oswald espaciado "
                         onClick={() => agregarAlCarrito(prod, setCarritoStore)}
                       >
                         Agregar al carrito
