@@ -43,6 +43,7 @@ function Home() {
 
       <section className="container pb-2 d-flex sm-bottom">
         {/* https://uhmo.com.ar/ */}
+        <div className="d-none"> https://uhmo.com.ar/</div>
         <div className="text-center w-100">
           <input
             id="search"
@@ -78,7 +79,7 @@ function Home() {
           </div>
         </div>
       </section>
-      {/* https://acequiones.vercel.app/ */}
+      <div className="d-none">{/* https://acequiones.vercel.app/ */}</div>
       <section className="container mt-4" id="productos">
         <div className="row container-mid ">
           {productosFiltrados.length > 0 ? (
@@ -89,6 +90,7 @@ function Home() {
               >
                 <div className="col-4 p-0 col-md-4 col-lg-4 pt-3 m-0">
                   {/* <a href="#" className="text-decoration-none"> */}
+
                   <img
                     src={prod.imagenes}
                     className="card-img-top"
