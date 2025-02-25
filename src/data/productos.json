@@ -91,18 +91,27 @@
     "alt": "zapatillas adidas run falcon 5"
   },
   {
-    "id": "015",
-    "nombre": "Zapatillas",
-    "marca": "All star",
-    "modelo": "Converse",
-    "precio": "76000",
+    "id": "033",
+    "nombre": "Pollo",
+    "marca": "Pollo",
+    "precio": "6800",
     "stock": "33",
     "detalles": {
-      "descripcion": "Converse negras",
-      "color": "Negro",
-      "talla": "44"
+      "descripcion": "patamuslos deshuesados"
     },
-    "imagenes": "https://centerdeportes.com.ar/182-large_default/zapatillas-converse-ct-all-star-plataforma-lift-ox-negra.jpg",
-    "alt": "zapatillas all star converse"
+    "imagenes": "https://acdn-us.mitiendanube.com/stores/001/924/637/products/pollo-trozado11-6c6b50871c811be64616416040788526-640-0.png",
+    "alt": "patamuslo"
+  },
+  {
+    "id": "027",
+    "nombre": "Pollo",
+    "marca": "Pollo",
+    "precio": "6200",
+    "stock": "21",
+    "detalles": {
+      "descripcion": "patamuslos entero"
+    },
+    "imagenes": "https://http2.mlstatic.com/D_NQ_NP_816525-MLA46620636513_072021-O.webp",
+    "alt": "patamuslo"
   }
 ]

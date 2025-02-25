@@ -32,6 +32,37 @@
   },
   {
     "empresa": {
+      "id": "2",
+      "nombre": "Pollito Pio",
+      "descripcion": "Empresa dedicada a la producciójn y venta de pollo",
+      "logo": "#",
+      "direccion": {
+        "calle": "Romano",
+        "numero": "710",
+        "ciudad": "Yerba Buena",
+        "provincia": "Tucumán",
+        "codigo_postal": "4107",
+        "pais": "Argentina"
+      },
+      "contacto": {
+        "telefono": "+52 123 456 7890",
+        "whatsapp": "+52 123 456 7890",
+        "email": "contacto@pollo.com",
+        "pagina_web": "#"
+      },
+      "horarios": {
+        "lunes_viernes": "09:00 AM - 10:00 PM",
+        "sabado": "09:00 AM - 10:00 PM",
+        "domingo": "09:00 AM - 10:00 PM"
+      },
+      "redes_sociales": {
+        "instagram": "@pollitopio",
+        "instagram_url": "#"
+      }
+    }
+  },
+  {
+    "empresa": {
       "id": "1",
       "nombre": "UHMO",
       "descripcion": "Somos Flexishop",
