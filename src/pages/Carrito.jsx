@@ -19,7 +19,7 @@ function Carrito() {
         <div className="container">
           <Breadcrumb></Breadcrumb>
 
-          <h2 className="text-center py-3 oswald"> Mi Carrito </h2>
+          <h2 className="text-center py-1 oswald"> Mi Carrito </h2>
           <div>
             {cantidadItems <= 0 ? (
               ""
@@ -28,10 +28,10 @@ function Carrito() {
             )}
           </div>
           <div className="row">
-            <div className="col-12 col-md-7 col-lg-8 d-flex mt-3 align-items-center">
+            <div className="col-12 col-md-7 col-lg-8 d-flex mt-1 align-items-center">
               <CarritoProductos></CarritoProductos>
             </div>
-            <div className="col-12 col-md-5 col-lg-4 mt-3">
+            <div className="col-12 col-md-5 col-lg-4 mt-1">
               <CarritoCantidad></CarritoCantidad>
             </div>
           </div>

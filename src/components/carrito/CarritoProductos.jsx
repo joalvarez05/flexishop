@@ -49,7 +49,10 @@ function CarritoProductos() {
     <div>
       {carritoStore.length > 0 ? (
         carritoStore.map((prod) => (
-          <div key={prod.id} className="container card sombra mt-lg-2 mt-md-2 mt-1">
+          <div
+            key={prod.id}
+            className="container card sombra mt-lg-2 mt-md-2 mt-1"
+          >
             <div className="mt-1 bottom-line">
               <div className="row">
                 <div className="col-lg-3 col-3 d-flex justify-content-center">
@@ -92,7 +95,7 @@ function CarritoProductos() {
                   <div className="fw-lighter">Color: {prod.detalles.color}</div>
                   <div className="fw-lighter">Talle: {prod.detalles.talla}</div>
                   <div className="d-flex gap-1 align-items-center justify-content-between">
-                    <h5 className="descuento fs-5">{formatearPrecio(prod)}</h5>
+                    <h5 className="descuento">{formatearPrecio(prod)}</h5>
                     <button
                       type="button"
                       title="Borrar articulo"

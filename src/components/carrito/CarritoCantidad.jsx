@@ -14,8 +14,8 @@ function CarritoCantidad() {
   };
 
   return (
-    <div className="text-center w-100 ">
-      <div className="container mt-3 card">
+    <div className="text-center w-100">
+      <div className="container mt-3 mt-lg-1 card">
         <div className="mt-2 bottom-line pb-3">
           <h3 className="pb-5 pt-3 oswald">Resumen de tu pedido: </h3>
           {carritoStore.length > 0 ? (
